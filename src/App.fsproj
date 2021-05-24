@@ -4,7 +4,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Types.fs" />
-    <Compile Include="Stores.fs" />
+    <Compile Include="Keyboard.fs" />
+    <Compile Include="Settings.fs" />
+    <Compile Include="Commands.fs" />
     <Compile Include="Components/Navbar.fs" />
     <Compile Include="Pages/Settings.fs" />
     <Compile Include="Pages/Home.fs" />
@@ -17,5 +19,6 @@
     <PackageReference Include="Fable.Browser.Dom" Version="2.*" />
     <PackageReference Include="Fable.Browser.Event" Version="1.*" />
     <PackageReference Include="Thoth.Fetch" Version="2.*" />
+    <PackageReference Include="Thoth.Json" Version="5.1.0" />
   </ItemGroup>
 </Project>

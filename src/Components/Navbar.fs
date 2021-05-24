@@ -5,7 +5,6 @@ open Sutil
 open Sutil.Bulma
 open Sutil.DOM
 open Sutil.Attr
-open Stores
 
 let private getTheme (isDarkTheme: bool) =
   match isDarkTheme with

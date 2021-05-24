@@ -4,6 +4,7 @@ specifiers:
   '@snowpack/plugin-dotenv': ~2.1.0
   '@snowpack/plugin-svelte': ~3.7.0
   bulma: ~0.9.2
+  keyboardjs: ^2.6.4
   snowpack: ~3.5.0
   svelte: ~3.38.2
   svelte-hmr: ~0.14.4
@@ -12,6 +13,7 @@ dependencies:
   '@snowpack/plugin-dotenv': 2.1.0
   '@snowpack/plugin-svelte': 3.7.0_svelte@3.38.2
   bulma: 0.9.2
+  keyboardjs: 2.6.4
   snowpack: 3.5.0
 
 devDependencies:
@@ -683,6 +685,10 @@ packages:
       extsprintf: 1.3.0
       json-schema: 0.2.3
       verror: 1.10.0
+    dev: false
+
+  /keyboardjs/2.6.4:
+    resolution: {integrity: sha512-xDiNwiwH3KUqap++RFJiLAXzbvRB5Yw08xliuceOgLhM1o7g1puKKR9vWy6wp9H/Bi4VP0+SQMpiWXMWWmR6rA==}
     dev: false
 
   /lru-cache/6.0.0:

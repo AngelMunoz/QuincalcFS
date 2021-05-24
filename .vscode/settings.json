@@ -1,7 +1,7 @@
 {
     "files.exclude": {
         "**/.cache": true,
-        // "**/.fable": true,
+        "**/.fable": true,
         "**/.ionide": true,
         "**/*.fs.js": true
     }

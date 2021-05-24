@@ -5,7 +5,6 @@ open Sutil.Bulma
 open Sutil.DOM
 open Sutil.Attr
 open Types
-open Stores
 open Sutil.Styling
 
 let view () =
