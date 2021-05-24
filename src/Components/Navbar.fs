@@ -5,56 +5,50 @@ open Sutil
 open Sutil.Bulma
 open Sutil.DOM
 open Sutil.Attr
+open Sutil.Styling
 
-let private getTheme (isDarkTheme: bool) =
-  match isDarkTheme with
-  | true -> text "🌞"
-  | false -> text "🌚"
+let private getTheme (theme: Theme) =
+  match theme with
+  | Dark -> text "🌞"
+  | Light -> text "🌚"
 
 let view (navigateTo: Option<Page -> unit>) =
-  let navOpen = Store.make false
-
   let onMenuItemClick (page: Page) =
     Option.iter (fun fn -> fn page) navigateTo
 
-  let isDark = Settings.IsDarkThemeActive
-  let isLight = Settings.IsLightThemeActive
+  let theme =
+    Settings.AppSettings
+    |> Store.map
+         (fun (store: AppSettings) ->
+           store.theme
+           |> Option.defaultValue (Settings.GetTheme()))
 
-  bulma.navbar [
-    disposeOnUnmount [ navOpen ]
-    navbar.isFixedBottom
-    bindClass isDark "is-dark"
-    bindClass isLight "is-light"
-    bulma.navbarBrand.div [
-      bulma.navbarItem.a [
-        text "Sutil Experiments"
-        onClick (fun _ -> onMenuItemClick Home) []
-      ]
-      bulma.navbarBurger [
-        bindClass navOpen "is-active"
-        onClick (fun _ -> Store.set navOpen (Store.get navOpen |> not)) []
-        Html.span [ Attr.ariaHidden true ]
-        Html.span [ Attr.ariaHidden true ]
-        Html.span [ Attr.ariaHidden true ]
-      ]
-    ]
-    bulma.navbarMenu [
-      bindClass navOpen "is-active"
-      bulma.navbarStart.div [
-        bulma.navbarItem.a [
-          bindFragment Settings.IsDarkThemeActive getTheme
-          onClick (fun _ -> Settings.SwitchTheme()) []
-        ]
-      ]
-      bulma.navbarEnd.div [
-        bulma.navbarItem.a [
-          text "Home"
+  Html.nav [
+
+    Html.ul [
+      Html.li [
+        Html.a [
+          text "Quincalc"
           onClick (fun _ -> onMenuItemClick Home) []
         ]
-        bulma.navbarItem.a [
-          text "About"
-          onClick (fun _ -> onMenuItemClick Settings) []
-        ]
+      ]
+    ]
+    Html.ul [
+      Html.li [
+        text "Settings"
+        onClick (fun _ -> onMenuItemClick Settings) []
+      ]
+      Html.li [
+        text "Switch Theme "
+        bindFragment theme <| fun theme -> getTheme theme
+        onClick (fun _ -> Settings.SwitchTheme()) []
       ]
     ]
   ]
+  |> withStyle [
+       rule
+         "nav"
+         [ Css.paddingLeft (Feliz.length.em (1))
+           Css.paddingRight (Feliz.length.em (1)) ]
+       rule "li" [ Css.cursorPointer ]
+     ]

@@ -8,7 +8,7 @@ type Theme =
   | Light
   | Dark
 
-type AppSettings = { theme: Theme }
+type AppSettings = { theme: Theme option }
 
 type AppResource =
   | Expense

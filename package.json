@@ -12,7 +12,7 @@
   "dependencies": {
     "@snowpack/plugin-dotenv": "~2.1.0",
     "@snowpack/plugin-svelte": "~3.7.0",
-    "bulma": "~0.9.2",
+    "@picocss/pico": "~1.2.1",
     "keyboardjs": "^2.6.4",
     "snowpack": "~3.5.0"
   }

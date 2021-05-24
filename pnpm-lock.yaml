@@ -1,18 +1,18 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@picocss/pico': ~1.2.1
   '@snowpack/plugin-dotenv': ~2.1.0
   '@snowpack/plugin-svelte': ~3.7.0
-  bulma: ~0.9.2
   keyboardjs: ^2.6.4
   snowpack: ~3.5.0
   svelte: ~3.38.2
   svelte-hmr: ~0.14.4
 
 dependencies:
+  '@picocss/pico': 1.2.1
   '@snowpack/plugin-dotenv': 2.1.0
   '@snowpack/plugin-svelte': 3.7.0_svelte@3.38.2
-  bulma: 0.9.2
   keyboardjs: 2.6.4
   snowpack: 3.5.0
 
@@ -70,6 +70,10 @@ packages:
       infer-owner: 1.0.4
       node-gyp: 7.1.2
       read-package-json-fast: 2.0.2
+    dev: false
+
+  /@picocss/pico/1.2.1:
+    resolution: {integrity: sha512-nWFl1kDOCOB4c3d7OmXkKmBgJySNXuAZFo384FCvrBmcdI7Op0gfR808vdaHFHpT+0UKNcfCYWCPWxjwOCPi5w==}
     dev: false
 
   /@snowpack/plugin-dotenv/2.1.0:
@@ -232,10 +236,6 @@ packages:
 
   /builtins/1.0.3:
     resolution: {integrity: sha1-y5T662HIaWRR2zZTThQi+U8K7og=}
-    dev: false
-
-  /bulma/0.9.2:
-    resolution: {integrity: sha512-e14EF+3VSZ488yL/lJH0tR8mFWiEQVCMi/BQUMi2TGMBOk+zrDg4wryuwm/+dRSHJw0gMawp2tsW7X1JYUCE3A==}
     dev: false
 
   /cacache/15.1.0:

@@ -15,7 +15,12 @@ let init () : State * Cmd<Msg> = { page = Home }, Cmd.none
 
 let update (msg: Msg) (state: State) : State * Cmd<Msg> =
   match msg with
-  | NavigateTo page -> { state with page = page }, Cmd.none
+  | NavigateTo page ->
+      match page with
+      | Home -> Keyboard.setContext "home"
+      | Settings -> Keyboard.setContext "settings"
+
+      { state with page = page }, Cmd.none
 
 let navigateTo (dispatch: Dispatch<Msg>) (page: Page) =
   NavigateTo page |> dispatch
@@ -39,17 +44,6 @@ let view () =
       Navbar.view (Some navigateTo)
     ]
     Html.main [
-      class' "hero is-fullheight"
-      bindClass Settings.IsDarkThemeActive "is-dark"
-      bindClass Settings.IsLightThemeActive "is-light"
-      Html.button [
-        text "Set Context 'payments'"
-        onClick (fun _ -> Keyboard.setContext "payments") []
-      ]
-      Html.button [
-        text "Set Context 'expenses'"
-        onClick (fun _ -> Keyboard.setContext "expenses") []
-      ]
       bindFragment state
       <| fun state ->
            match state.page with

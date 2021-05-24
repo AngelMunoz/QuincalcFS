@@ -6,34 +6,3 @@
 .page {
   padding: 1em;
 }
-
-.input.is-dark, .textarea.is-dark, .select select.is-dark {
-  box-shadow: inset 0 0.0625em 0.125em rgb(68 68 68);
-  background-color: #363636;
-  color: #fff;
-  border-color: #dbdbdb;
-}
-
-.card.is-dark {
-  background-color: #363636;
-  color: #fff;
-  box-shadow: 0 0.5em 1em -0.125em rgb(237 237 237), 0 0px 0 1px rgb(237 237 237);
-}
-.card.is-dark .card-header-title {
-  color: #fff;
-}
-
-.grid {
-  display: grid;
-  gap: 1em;
-}
-.g-3by3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-
-@media all and (max-width: 526px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-}
