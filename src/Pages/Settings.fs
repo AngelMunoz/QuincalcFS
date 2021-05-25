@@ -1,7 +1,7 @@
+[<RequireQualifiedAccess>]
 module Pages.Settings
 
 open Sutil
-open Sutil.Bulma
 open Sutil.DOM
 open Sutil.Attr
 open Types

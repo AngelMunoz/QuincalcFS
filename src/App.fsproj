@@ -7,8 +7,11 @@
     <Compile Include="Keyboard.fs" />
     <Compile Include="Settings.fs" />
     <Compile Include="Commands.fs" />
+    <Compile Include="Components/Icon.fs" />
     <Compile Include="Components/Navbar.fs" />
     <Compile Include="Pages/Settings.fs" />
+    <Compile Include="Pages/Payments.fs" />
+    <Compile Include="Pages/Expenses.fs" />
     <Compile Include="Pages/Home.fs" />
     <Compile Include="App.fs" />
     <Compile Include="Main.fs" />

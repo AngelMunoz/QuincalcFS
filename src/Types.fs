@@ -2,6 +2,8 @@ module Types
 
 type Page =
   | Home
+  | Expenses
+  | Payments
   | Settings
 
 type Theme =
@@ -14,9 +16,7 @@ type AppResource =
   | Expense
   | Payment
 
-type Period = Period of string
-
 [<RequireQualifiedAccess>]
 type AppCommand =
   | New of AppResource
-  | Open of Period
+  | Open of AppResource
