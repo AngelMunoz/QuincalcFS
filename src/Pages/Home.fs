@@ -14,6 +14,7 @@ let view (navigateTo: Option<Page -> unit>) =
     Option.iter (fun fn -> fn page) navigateTo
 
   Html.article [
+    class' "page"
     Html.section [
       Html.header [
         Html.div [ text "Summary" ]
@@ -41,8 +42,9 @@ let view (navigateTo: Option<Page -> unit>) =
     ]
   ]
   |> withStyle [
+       Styles.Page
        rule
-         "article"
+         ".page"
          [ Css.displayFlex
            Css.overflowXAuto
            Css.width (Feliz.length.vw 100)

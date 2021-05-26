@@ -53,6 +53,9 @@ let view () =
   let state, elDispatch = Store.makeElmish init update ignore ()
   let navigateTo = navigateTo elDispatch
 
+  let enableBack =
+    state .> (fun state -> state.navStack.Length <= 1)
+
   let sub =
     Commands.CommandStream
     |> Store.subscribe (fun cmd -> printfn "%A" cmd)
@@ -64,16 +67,13 @@ let view () =
       Components.Navbar.view (Some navigateTo)
     ]
     Html.main [
-      bindFragment (state .> (fun state -> state.navStack))
-      <| fun stack ->
-           if stack.Length > 1 then
-             Html.a [
-               Attr.custom ("role", "button")
-               onClick (fun _ -> elDispatch NavigateBack) []
-               MdiIcon(Icon.Back)
-             ]
-           else
-             Html.a []
+      Html.button [
+        class' "outline back-btn"
+        Attr.custom ("role", "button")
+        onClick (fun _ -> elDispatch NavigateBack) []
+        MdiIcon(Icon.Back)
+        Attr.disabled enableBack
+      ]
       bindFragment state
       <| fun state ->
            match state.navStack |> List.head with
@@ -82,4 +82,21 @@ let view () =
            | Payments -> Payments.view ()
            | Settings -> Settings.view ()
     ]
+    |> withStyle [
+         rule
+           "main"
+           [ Css.displayFlex
+             Css.flexDirectionColumn ]
+         Styles.Page
+         rule
+           "button.back-btn"
+           [ Css.marginLeft Feliz.length.auto
+             Css.height 35
+             Css.width 75
+             Css.displayFlex
+             Css.justifyContentCenter
+             Css.alignItemsCenter
+             Css.marginRight (Feliz.length.em 1)
+             Css.custom ("justify-self", "flex-end") ]
+       ]
   ]

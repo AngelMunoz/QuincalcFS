@@ -28,6 +28,7 @@ let view () =
 
 
   Html.article [
+    class' "page"
     onUnmount
       (fun _ ->
         if Settings.DidSaveTheme() |> not then
