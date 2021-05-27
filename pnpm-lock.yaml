@@ -5,6 +5,9 @@ specifiers:
   '@snowpack/plugin-dotenv': ~2.1.0
   '@snowpack/plugin-svelte': ~3.7.0
   keyboardjs: ^2.6.4
+  pouchdb-browser: ^7.2.2
+  pouchdb-find: ^7.2.2
+  rollup: ^2.50.1
   snowpack: ~3.5.0
   svelte: ~3.38.2
   svelte-hmr: ~0.14.4
@@ -12,11 +15,14 @@ specifiers:
 dependencies:
   '@picocss/pico': 1.2.1
   '@snowpack/plugin-dotenv': 2.1.0
-  '@snowpack/plugin-svelte': 3.7.0_svelte@3.38.2
+  '@snowpack/plugin-svelte': 3.7.0_rollup@2.50.1+svelte@3.38.2
   keyboardjs: 2.6.4
+  pouchdb-browser: 7.2.2
+  pouchdb-find: 7.2.2
   snowpack: 3.5.0
 
 devDependencies:
+  rollup: 2.50.1
   svelte: 3.38.2
   svelte-hmr: 0.14.4_svelte@3.38.2
 
@@ -83,12 +89,12 @@ packages:
       dotenv-expand: 5.1.0
     dev: false
 
-  /@snowpack/plugin-svelte/3.7.0_svelte@3.38.2:
+  /@snowpack/plugin-svelte/3.7.0_rollup@2.50.1+svelte@3.38.2:
     resolution: {integrity: sha512-YR2t/aMswjUV0D/qFBjIGA7VIgl5IrNHIuJbNtj2YR2heRWaSm7LYLUJKbnho7iKUqCtc+ZcwpgGZO/VNYlLNg==}
     peerDependencies:
       svelte: ^3.21.0
     dependencies:
-      rollup-plugin-svelte: 7.1.0_svelte@3.38.2
+      rollup-plugin-svelte: 7.1.0_rollup@2.50.1+svelte@3.38.2
       svelte: 3.38.2
       svelte-hmr: 0.13.3_svelte@3.38.2
       svelte-preprocess: 4.7.3_svelte@3.38.2
@@ -128,6 +134,13 @@ packages:
 
   /abbrev/1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
+    dev: false
+
+  /abort-controller/3.0.0:
+    resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
+    engines: {node: '>=6.5'}
+    dependencies:
+      event-target-shim: 5.0.1
     dev: false
 
   /agent-base/6.0.2:
@@ -183,6 +196,10 @@ packages:
       readable-stream: 2.3.7
     dev: false
 
+  /argsarray/0.0.1:
+    resolution: {integrity: sha1-bnIHtOzbObCviDA/pa4ivajfYcs=}
+    dev: false
+
   /asn1/0.2.4:
     resolution: {integrity: sha512-jxwzQpLQjSmWXgwaCZE9Nz+glAG01yF1QnWgbhGwHI5A6FRIEY6IVqtHhIepHqI7/kyEyQEagBC5mBEFlIYvdg==}
     dependencies:
@@ -234,6 +251,10 @@ packages:
       concat-map: 0.0.1
     dev: false
 
+  /buffer-from/1.1.1:
+    resolution: {integrity: sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==}
+    dev: false
+
   /builtins/1.0.3:
     resolution: {integrity: sha1-y5T662HIaWRR2zZTThQi+U8K7og=}
     dev: false
@@ -278,6 +299,11 @@ packages:
   /cli-spinners/2.6.0:
     resolution: {integrity: sha512-t+4/y50K/+4xcCRosKkA7W4gTr1MySvLV0q+PxmG7FJ5g+66ChKurYjxBCjHggHH3HA5Hh9cy+lcUGWDqVH+4Q==}
     engines: {node: '>=6'}
+    dev: false
+
+  /clone-buffer/1.0.0:
+    resolution: {integrity: sha1-4+JbIHrE5wGvch4staFnksrD3Fg=}
+    engines: {node: '>= 0.10'}
     dev: false
 
   /code-point-at/1.1.0:
@@ -393,6 +419,11 @@ packages:
     resolution: {integrity: sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==}
     dev: false
 
+  /event-target-shim/5.0.1:
+    resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
+    engines: {node: '>=6'}
+    dev: false
+
   /extend/3.0.2:
     resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
     dev: false
@@ -412,6 +443,13 @@ packages:
 
   /fdir/5.0.0:
     resolution: {integrity: sha512-cteqwWMA43lEmgwOg5HSdvhVFD39vHjQDhZkRMlKmeoNPtSSgUw1nUypydiY2upMdGiBFBZvNBDbnoBh0yCzaQ==}
+    dev: false
+
+  /fetch-cookie/0.10.1:
+    resolution: {integrity: sha512-beB+VEd4cNeVG1PY+ee74+PkuCQnik78pgLi5Ah/7qdUfov8IctU0vLUbBT8/10Ma5GMBeI4wtxhGrEfKNYs2g==}
+    engines: {node: '>=8'}
+    dependencies:
+      tough-cookie: 4.0.0
     dev: false
 
   /forever-agent/0.6.1:
@@ -450,7 +488,6 @@ packages:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
-    dev: false
     optional: true
 
   /function-bind/1.1.1:
@@ -575,6 +612,10 @@ packages:
     resolution: {integrity: sha512-PY6Ii8o1jMRA1z4F2hRkH/xN59ox43DavKvD3oDpfurRlOJyAHpifIwpbdv1n4jt4ov0jSpw3kQ4GhJnpBL6WQ==}
     dependencies:
       minimatch: 3.0.4
+    dev: false
+
+  /immediate/3.3.0:
+    resolution: {integrity: sha512-HR7EVodfFUdQCTIeySw+WDRFJlPcLOJbXfwwZ7Oom6tjsvZ3bOkCDJHehQC3nxJrv7+f9XecwazynjU8e4Vw3Q==}
     dev: false
 
   /imurmurhash/0.1.4:
@@ -819,6 +860,11 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: false
 
+  /node-fetch/2.6.0:
+    resolution: {integrity: sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==}
+    engines: {node: 4.x || >=6.0.0}
+    dev: false
+
   /node-gyp/7.1.2:
     resolution: {integrity: sha512-CbpcIo7C3eMu3dL1c3d0xw449fHIGALIJsRP4DDPHpyiW8vcriNY7ubh9TE4zEKfSxscY7PjeFnshE7h75ynjQ==}
     engines: {node: '>= 10.12.0'}
@@ -1005,6 +1051,106 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
+  /pouchdb-abstract-mapreduce/7.2.2:
+    resolution: {integrity: sha512-7HWN/2yV2JkwMnGnlp84lGvFtnm0Q55NiBUdbBcaT810+clCGKvhssBCrXnmwShD1SXTwT83aszsgiSfW+SnBA==}
+    dependencies:
+      pouchdb-binary-utils: 7.2.2
+      pouchdb-collate: 7.2.2
+      pouchdb-collections: 7.2.2
+      pouchdb-errors: 7.2.2
+      pouchdb-fetch: 7.2.2
+      pouchdb-mapreduce-utils: 7.2.2
+      pouchdb-md5: 7.2.2
+      pouchdb-utils: 7.2.2
+    dev: false
+
+  /pouchdb-binary-utils/7.2.2:
+    resolution: {integrity: sha512-shacxlmyHbUrNfE6FGYpfyAJx7Q0m91lDdEAaPoKZM3SzAmbtB1i+OaDNtYFztXjJl16yeudkDb3xOeokVL3Qw==}
+    dependencies:
+      buffer-from: 1.1.1
+    dev: false
+
+  /pouchdb-browser/7.2.2:
+    resolution: {integrity: sha512-90pkngk9/F95knUwOhGQ0xuNzG51uIecF5kD5AfNdhqqrV9wbngz+I3QA7u/9eVyZRVyOrTrT3oaKcNqAB7Brg==}
+    dependencies:
+      argsarray: 0.0.1
+      immediate: 3.3.0
+      inherits: 2.0.4
+      spark-md5: 3.0.1
+      uuid: 8.1.0
+      vuvuzela: 1.0.3
+    dev: false
+
+  /pouchdb-collate/7.2.2:
+    resolution: {integrity: sha512-/SMY9GGasslknivWlCVwXMRMnQ8myKHs4WryQ5535nq1Wj/ehpqWloMwxEQGvZE1Sda3LOm7/5HwLTcB8Our+w==}
+    dev: false
+
+  /pouchdb-collections/7.2.2:
+    resolution: {integrity: sha512-6O9zyAYlp3UdtfneiMYuOCWdUCQNo2bgdjvNsMSacQX+3g8WvIoFQCYJjZZCpTttQGb+MHeRMr8m2U95lhJTew==}
+    dev: false
+
+  /pouchdb-errors/7.2.2:
+    resolution: {integrity: sha512-6GQsiWc+7uPfgEHeavG+7wuzH3JZW29Dnrvz8eVbDFE50kVFxNDVm3EkYHskvo5isG7/IkOx7PV7RPTA3keG3g==}
+    dependencies:
+      inherits: 2.0.4
+    dev: false
+
+  /pouchdb-fetch/7.2.2:
+    resolution: {integrity: sha512-lUHmaG6U3zjdMkh8Vob9GvEiRGwJfXKE02aZfjiVQgew+9SLkuOxNw3y2q4d1B6mBd273y1k2Lm0IAziRNxQnA==}
+    dependencies:
+      abort-controller: 3.0.0
+      fetch-cookie: 0.10.1
+      node-fetch: 2.6.0
+    dev: false
+
+  /pouchdb-find/7.2.2:
+    resolution: {integrity: sha512-BmFeFVQ0kHmDehvJxNZl9OmIztCjPlZlVSdpijuFbk/Fi1EFPU1BAv3kLC+6DhZuOqU/BCoaUBY9sn66pPY2ag==}
+    dependencies:
+      pouchdb-abstract-mapreduce: 7.2.2
+      pouchdb-collate: 7.2.2
+      pouchdb-errors: 7.2.2
+      pouchdb-fetch: 7.2.2
+      pouchdb-md5: 7.2.2
+      pouchdb-selector-core: 7.2.2
+      pouchdb-utils: 7.2.2
+    dev: false
+
+  /pouchdb-mapreduce-utils/7.2.2:
+    resolution: {integrity: sha512-rAllb73hIkU8rU2LJNbzlcj91KuulpwQu804/F6xF3fhZKC/4JQMClahk+N/+VATkpmLxp1zWmvmgdlwVU4HtQ==}
+    dependencies:
+      argsarray: 0.0.1
+      inherits: 2.0.4
+      pouchdb-collections: 7.2.2
+      pouchdb-utils: 7.2.2
+    dev: false
+
+  /pouchdb-md5/7.2.2:
+    resolution: {integrity: sha512-c/RvLp2oSh8PLAWU5vFBnp6ejJABIdKqboZwRRUrWcfGDf+oyX8RgmJFlYlzMMOh4XQLUT1IoaDV8cwlsuryZw==}
+    dependencies:
+      pouchdb-binary-utils: 7.2.2
+      spark-md5: 3.0.1
+    dev: false
+
+  /pouchdb-selector-core/7.2.2:
+    resolution: {integrity: sha512-XYKCNv9oiNmSXV5+CgR9pkEkTFqxQGWplnVhO3W9P154H08lU0ZoNH02+uf+NjZ2kjse7Q1fxV4r401LEcGMMg==}
+    dependencies:
+      pouchdb-collate: 7.2.2
+      pouchdb-utils: 7.2.2
+    dev: false
+
+  /pouchdb-utils/7.2.2:
+    resolution: {integrity: sha512-XmeM5ioB4KCfyB2MGZXu1Bb2xkElNwF1qG+zVFbQsKQij0zvepdOUfGuWvLRHxTOmt4muIuSOmWZObZa3NOgzQ==}
+    dependencies:
+      argsarray: 0.0.1
+      clone-buffer: 1.0.0
+      immediate: 3.3.0
+      inherits: 2.0.4
+      pouchdb-collections: 7.2.2
+      pouchdb-errors: 7.2.2
+      pouchdb-md5: 7.2.2
+      uuid: 8.1.0
+    dev: false
+
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: false
@@ -1105,7 +1251,7 @@ packages:
       glob: 7.1.7
     dev: false
 
-  /rollup-plugin-svelte/7.1.0_svelte@3.38.2:
+  /rollup-plugin-svelte/7.1.0_rollup@2.50.1+svelte@3.38.2:
     resolution: {integrity: sha512-vopCUq3G+25sKjwF5VilIbiY6KCuMNHP1PFvx2Vr3REBNMDllKHFZN2B9jwwC+MqNc3UPKkjXnceLPEjTjXGXg==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -1113,6 +1259,7 @@ packages:
       svelte: '>=3.5.0'
     dependencies:
       require-relative: 0.8.7
+      rollup: 2.50.1
       rollup-pluginutils: 2.8.2
       svelte: 3.38.2
     dev: false
@@ -1130,6 +1277,14 @@ packages:
     optionalDependencies:
       fsevents: 2.1.3
     dev: false
+
+  /rollup/2.50.1:
+    resolution: {integrity: sha512-3MQhSdGpms4xjYrtR3WNHMT+VrWWM4oqUxUC770MmLo1FWFR2pr/OL81HSPC/ifmiu0uMFk0qPGLmjkSMRIESw==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
 
   /safe-buffer/5.1.2:
     resolution: {integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==}
@@ -1201,6 +1356,10 @@ packages:
     dependencies:
       ip: 1.1.5
       smart-buffer: 4.1.0
+    dev: false
+
+  /spark-md5/3.0.1:
+    resolution: {integrity: sha512-0tF3AGSD1ppQeuffsLDIOWlKUd3lS92tFxcsrh5Pe3ZphhnoK+oXIBTzOAThZCiuINZLvpiLH/1VS1/ANEJVig==}
     dev: false
 
   /sshpk/1.16.1:
@@ -1344,6 +1503,15 @@ packages:
       punycode: 2.1.1
     dev: false
 
+  /tough-cookie/4.0.0:
+    resolution: {integrity: sha512-tHdtEpQCMrc1YLrMaqXXcj6AxhYi/xgit6mZu1+EDWUn+qhUf8wMQoFIy9NXuq23zAwtcB0t/MjACGR18pcRbg==}
+    engines: {node: '>=6'}
+    dependencies:
+      psl: 1.8.0
+      punycode: 2.1.1
+      universalify: 0.1.2
+    dev: false
+
   /tunnel-agent/0.6.0:
     resolution: {integrity: sha1-J6XeoGs2sEoKmWZ3SykIaPD8QP0=}
     dependencies:
@@ -1364,6 +1532,11 @@ packages:
     resolution: {integrity: sha512-zoWr9ObaxALD3DOPfjPSqxt4fnZiWblxHIgeWqW8x7UqDzEtHEQLzji2cuJYQFCU6KmoJikOYAZlrTHHebjx2w==}
     dependencies:
       imurmurhash: 0.1.4
+    dev: false
+
+  /universalify/0.1.2:
+    resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
+    engines: {node: '>= 4.0.0'}
     dev: false
 
   /untildify/2.1.0:
@@ -1388,6 +1561,11 @@ packages:
     hasBin: true
     dev: false
 
+  /uuid/8.1.0:
+    resolution: {integrity: sha512-CI18flHDznR0lq54xBycOVmphdCYnQLKn8abKn7PXUiKUGdEd+/l9LWNJmugXel4hXq7S+RMNl34ecyC9TntWg==}
+    hasBin: true
+    dev: false
+
   /validate-npm-package-name/3.0.0:
     resolution: {integrity: sha1-X6kS2B630MdK/BQN5zF/DKffQ34=}
     dependencies:
@@ -1401,6 +1579,10 @@ packages:
       assert-plus: 1.0.0
       core-util-is: 1.0.2
       extsprintf: 1.3.0
+    dev: false
+
+  /vuvuzela/1.0.3:
+    resolution: {integrity: sha1-O+FF5YJxxzylUnndhR8SpoIRSws=}
     dev: false
 
   /which/2.0.2:

@@ -6,14 +6,17 @@
     "build": "pnpm prestart && dotnet fable src --run snowpack build"
   },
   "devDependencies": {
+    "rollup": "~2.50.1",
     "svelte": "~3.38.2",
     "svelte-hmr": "~0.14.4"
   },
   "dependencies": {
+    "@picocss/pico": "~1.2.1",
     "@snowpack/plugin-dotenv": "~2.1.0",
     "@snowpack/plugin-svelte": "~3.7.0",
-    "@picocss/pico": "~1.2.1",
-    "keyboardjs": "^2.6.4",
+    "keyboardjs": "~2.6.4",
+    "pouchdb-browser": "^~.2.2",
+    "pouchdb-find": "^~.2.2",
     "snowpack": "~3.5.0"
   }
 }

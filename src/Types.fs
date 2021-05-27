@@ -1,5 +1,7 @@
 module Types
 
+open System
+
 type Page =
   | Home
   | Expenses
@@ -12,9 +14,10 @@ type Theme =
 
 type Expense =
   { _id: string
+    rev: string option
     name: string
-    dueTo: int64
-    amount: decimal }
+    dueTo: DateTimeOffset
+    amount: float }
 
 type AppSettings = { theme: Theme option }
 
