@@ -46,6 +46,15 @@ importDefault "@shoelace-style/shoelace/dist/components/textarea/textarea.js"
 importDefault "@shoelace-style/shoelace/dist/components/tooltip/tooltip.js"
 |> ignore
 
+importDefault "@shoelace-style/shoelace/dist/components/tab-group/tab-group.js"
+|> ignore
+
+importDefault "@shoelace-style/shoelace/dist/components/tab-panel/tab-panel.js"
+|> ignore
+
+importDefault "@shoelace-style/shoelace/dist/components/tab/tab.js"
+|> ignore
+
 importDefault
   "@shoelace-style/shoelace/dist/components/format-number/format-number.js"
 |> ignore
