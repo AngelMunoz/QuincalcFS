@@ -7,7 +7,7 @@ export function isDarkThemeActive() {
 
 export function registerThemeChangedCb(cb) {
     function isDarkTheme() {
-        cb(darkThemeQuery.matches)
+        cb(darkThemeQuery.matches);
     }
     darkThemeQuery.addEventListener('change', isDarkTheme);
 }
@@ -17,10 +17,14 @@ export function registerThemeChangedCb(cb) {
  * @param {string?} theme
  */
 export function overrideTheme(theme) {
-    const html = document.querySelector('html');
+    const body = document.body;
     if (!theme?.name?.toLowerCase() || theme?.name?.toLowerCase() === undefined || theme?.name?.toLowerCase() === 'undefined') {
-        html?.removeAttribute('data-theme');
+        body.classList.remove('sl-theme-dark');
         return;
     }
-    html?.setAttribute('data-theme', theme?.name?.toLowerCase())
+    if (theme.name.toLowerCase() === 'dark') {
+        body.classList.add('sl-theme-dark');
+    } else {
+        body.classList.remove('sl-theme-dark');
+    }
 }

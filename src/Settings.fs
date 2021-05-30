@@ -5,6 +5,7 @@ open Fable.Core
 open Sutil
 open Types
 open Browser.WebStorage
+open Browser.Dom
 
 [<ImportMember("./Interop/Theme.js")>]
 let private registerThemeChangedCb (cb: bool -> unit) = jsNative
@@ -113,3 +114,14 @@ registerThemeChangedCb
           theme = if isDark then Some Dark else Some Light }
 
     Store.set AppSettings settings)
+
+AppSettings
+.> (fun (settings: AppSettings) -> settings.theme)
+|> Store.distinct
+|> Store.write
+     (fun theme ->
+
+       match theme
+             |> Option.defaultValue (getThemeOrCurrentlyActive None) with
+       | Light -> document.body.classList.remove ("sl-theme-dark")
+       | Dark -> document.body.classList.add ("sl-theme-dark"))

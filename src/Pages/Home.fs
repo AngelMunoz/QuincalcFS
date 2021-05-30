@@ -17,11 +17,6 @@ let view (navigateTo: Option<Page -> unit>) =
     class' "page"
     Html.section [
       Html.header [
-        Html.div [ text "Summary" ]
-      ]
-    ]
-    Html.section [
-      Html.header [
         Html.div [ text "Expenses" ]
         Html.div [
           class' "icon"

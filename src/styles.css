@@ -1,0 +1,4 @@
+.sl-theme-dark {
+    background: var(--sl-color-gray-900);
+    color: var(--sl-color-gray-200);
+}
